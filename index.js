@@ -57,7 +57,12 @@ Client.prototype._buildOptions = function (query, options) {
 
 Client.prototype._buildResponse = function (res) {
 	return res.body.items.map(function (item) {
-		return item;
+		return {
+			url: item.link,
+	    snippet: item.snippet,
+	    thumbnail: item.image.thumbnailLink,
+	    context: item.image.contextLink
+		};
 	});
 };
 
